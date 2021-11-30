@@ -30,17 +30,24 @@ new Vue({
             const round = `Round-${this.round++}`
             const oponents = ['player', 'monster']
             let roundLog = []
-
+            
             for(i = 0; i < 2; i ++){
                 const j = i == 1 ? 0 : 1
+                
+                let target = oponents[j]
+                if (oponents[i] === 'player' && action.search(/ataque/) === -1){
+                    target = ''                    
+                } 
+
                 const obj = {
                     executor: oponents[i],
-                    target: oponents[j].search(/attack/) !== -1 ? oponents[j] : '',
-                    action: oponents[i] === 'player' ? action : 'causou dano',
+                    target,
+                    action: oponents[i] === 'player' ? action : 'Realizou ataque de',
                     value: values[`${oponents[i]}Attack`]
                 }
                 roundLog.push(obj)
             }
+
             this.battleLog.push({ [round]: roundLog })
         },
         calibrate(bonus){
@@ -71,25 +78,25 @@ new Vue({
         attack(){
             const {monsterAttack, playerAttack} = this.calibrate(false)
             this.lifeManagment(playerAttack, monsterAttack)         
-            this.log('causou dano', {playerAttack, monsterAttack} )
+            this.log('Realizou ataque de', {playerAttack, monsterAttack} )
         },
         specialAttack(){
             const {monsterAttack, playerAttack} = this.calibrate(true)
             this.lifeManagment(playerAttack, monsterAttack)
-            this.log('Realizou ataque especial', {playerAttack, monsterAttack})
+            this.log('Realizou ataque especial de', {playerAttack, monsterAttack})
         },
         heal(){
             const {monsterAttack, playerAttack} = this.calibrate(true)
             const heal = -(playerAttack - monsterAttack)
             this.lifeManagment(0, heal)
-            this.log('Curou-se', {playerAttack, monsterAttack})
+            this.log('Curou-se em', {playerAttack, monsterAttack})
         },
         restart(){
             this.player.life = 100
             this.monster.life = 100
             this.battleLog = []
             this.result = false
-            this.round = 0
+            this.round = 1
         },
         giveUp(){
             this.restart()
@@ -104,7 +111,14 @@ new Vue({
             return {odd: odd, even:!odd}
         },
         translate(word){
-            return word == 'player' ? 'jogador' : 'monstro'
+            switch(word){
+                case 'player':
+                    return 'jogador'
+                case 'monster':
+                    return 'monstro'
+                default: 
+                    return ''
+            }
         }
 
     },

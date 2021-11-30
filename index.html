@@ -54,9 +54,8 @@
                         :class="['round-action', oddOrEven(i)]"                           
                     >
                     {{translate(round.executor)}} {{ round.action }}
-                    de {{ round.value }} pontos em {{ round.target }}
-                        <!-- {{translate(round.executor)}} {{ round.action }} 
-                            {{ round.target }} em {{ round.value }} -->
+                    {{ round.value }} pontos 
+                    {{ translate(round.target) ? `em ${translate(round.target)}` : '' }} 
                     </p>
                 </div>
             </template>
