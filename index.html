@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Matador de monstro</title>
+</head>
+<body>
+    <div id="monster-killer">
+        <div class="panel">
+            <div class="card battle-display">
+                <div class="oponent">
+                    <h1>Jogador</h1>
+                    <div class="life-container">
+                        <div :class="['life', playerIsDying]" :style="{width:player.life+'%'}"></div>
+                    </div>
+                    <span>{{ player.life }}%</span>
+                    <img src="https://www.teahub.io/photos/full/143-1435530_thumb-image-knight-gif.gif" alt="Cavaleiro">
+                </div>
+                <div class="oponent">
+                    <h1>Monstro</h1>
+                    <div class="life-container">
+                        <div :class="['life', monsterIsDying]" :style="{width:monster.life+'%'}"></div>
+                    </div>
+                    <span>{{ monster.life }}%</span>
+                    <img src="https://i.pinimg.com/originals/5f/ec/3e/5fec3ecbe48174f56fcaeea159a7f0d4.gif" alt="Monstro">
+                </div>
+            </div>
+            <div class="card result" v-show="result" :class="winnerOrLoser">
+                {{ monster.life > 0 ? 'Você perdeu =/' : 'Você ganhou =)' }}
+            </div>
+            <div class="card actions">
+                <template v-if="!newGame">
+                    <button class="btn new-game" @click="startGame">
+                        Iniciar novo jogo
+                    </button>
+                </template>
+                <template v-else>
+                    <button class="btn attack" @click="attack">Ataque</button>
+                    <button class="btn special-attack" @click="specialAttack">Ataque especial</button>
+                    <button class="btn heal" @click="heal">curar</button>
+                    <button class="btn give-up" @click="giveUp">desistir</button>
+                </template>
+            </div>
+        </div>
+        <div v-show="battleLog.length != 0" class="card battle-log">
+            <template v-for="log in battleLog">
+                <div v-for="(rounds, key, i) in log" class="round">
+                    <h3 class="round-number">{{ key }}</h3>
+                    <p v-for="(round, i) in rounds" 
+                        :class="['round-action', oddOrEven(i)]"                           
+                    >
+                    {{translate(round.executor)}} {{ round.action }}
+                    de {{ round.value }} pontos em {{ round.target }}
+                        <!-- {{translate(round.executor)}} {{ round.action }} 
+                            {{ round.target }} em {{ round.value }} -->
+                    </p>
+                </div>
+            </template>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="./js/app.js"></script>
