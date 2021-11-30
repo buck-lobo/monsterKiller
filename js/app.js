@@ -64,8 +64,9 @@ new Vue({
         lifeManagment(playerAttack, monsterAttack){
             const {monster, player} = this.calibrate(false)
             
-            monster.life -= playerAttack
-            monster.life = monster.life < 0 ? 0 : monster.life
+            // monster.life -= playerAttack
+            // monster.life = monster.life < 0 ? 0 : monster.life
+            monster.life = Math.max(monster.life -= playerAttack, 0)
             
             player.life -= monsterAttack
             if(player.life < 0){
@@ -142,6 +143,10 @@ new Vue({
                 this.newGame = false
                 this.result = true
             }
+            setTimeout(() => {
+                document.scrollingElement.scroll(0, document.scrollingElement.scrollHeight)
+            }, 200)
+            
         }
     }
 })
