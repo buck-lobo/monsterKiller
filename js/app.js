@@ -48,7 +48,7 @@ new Vue({
                 roundLog.push(obj)
             }
 
-            this.battleLog.push({ [round]: roundLog })
+            this.battleLog.unshift({ [round]: roundLog })
         },
         calibrate(bonus){
             const monster = this.monster
@@ -142,11 +142,7 @@ new Vue({
             if(this.monster.life <= 0 || this.player.life <= 0){
                 this.newGame = false
                 this.result = true
-            }
-            setTimeout(() => {
-                document.scrollingElement.scroll(0, document.scrollingElement.scrollHeight)
-            }, 200)
-            
+            }          
         }
     }
 })
