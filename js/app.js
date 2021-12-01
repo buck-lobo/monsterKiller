@@ -136,6 +136,7 @@ new Vue({
         },
         soundOn(){
             this.$refs.soundtrack.volume = 0.2
+            this.$refs.soundtrack.play()
             this.volume = 0.2
             this.muted = false
         },
