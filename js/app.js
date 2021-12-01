@@ -21,6 +21,9 @@ new Vue({
 
         },
         battleLog: [],
+        volume: 0.2,
+        muted: false,
+        credits: false,
     },
     methods: {
         random(min, max){
@@ -77,16 +80,19 @@ new Vue({
             
         },
         attack(){
+            this.attackSound()
             const {monsterAttack, playerAttack} = this.calibrate(false)
             this.lifeManagment(playerAttack, monsterAttack)         
             this.log('Realizou ataque de', {playerAttack, monsterAttack} )
         },
         specialAttack(){
+            this.specialAttackSound()
             const {monsterAttack, playerAttack} = this.calibrate(true)
             this.lifeManagment(playerAttack, monsterAttack)
-            this.log('Realizou ataque especial de', {playerAttack, monsterAttack})
+            this.log('Realizou ataque especial de', {playerAttack, monsterAttack})            
         },
         heal(){
+            this.healingSound()
             const {monsterAttack, playerAttack} = this.calibrate(true)
             const heal = -(playerAttack - monsterAttack)
             this.lifeManagment(0, heal)
@@ -100,10 +106,12 @@ new Vue({
             this.round = 1
         },
         giveUp(){
+            this.giveUpSound()
             this.restart()
             this.newGame = false
         },
         startGame(){
+            this.$refs.gameOn.play()
             this.restart()
             this.newGame = true
         },
@@ -120,9 +128,70 @@ new Vue({
                 default: 
                     return ''
             }
-        }
+        },
+        soundOff(){
+            this.$refs.soundtrack.volume = 0
+            this.volume = 0
+            this.muted = true
+        },
+        soundOn(){
+            this.$refs.soundtrack.volume = 0.2
+            this.volume = 0.2
+            this.muted = false
+        },
+        changeVolume(event){
+            console.log('Input', event.target.value)
+            this.volume = event.target.value / 100
+            this.$refs.soundtrack.volume = this.volume
+        },
+        specialAttackSound(){
+            const audio = this.$refs.especialAttackSound
+            audio.currentTime = 0
+            audio.volume = this.volume
+            audio.play()
+        },
+        healingSound(){
+            const audio = this.$refs.healingSpell
+            audio.volume = this.volume
+            audio.currentTime = 0
+            audio.play()
+            let int = setInterval(function() {
+                if (audio.currentTime > 1.8) {
+                    audio.pause();
+                    clearInterval(int);
+                }
+            }, 10);
+        },
+        attackSound(){
+            const audio = this.$refs.attackSound
+            audio.volume = this.volume
+            audio.currentTime = 0.6
+            audio.play()
+            let int = setInterval(function() {
+                if (audio.currentTime > 4) {
+                    audio.pause();
+                    clearInterval(int);
+                }
+            }, 10);
+        },
+        giveUpSound(){
+            const audio = this.$refs.giveUpSound
+            audio.volume = this.volume
+            audio.currentTime = 5
+            audio.play()
+            let int = setInterval(function() {
+                if (audio.currentTime > 8) {
+                    audio.pause();
+                    clearInterval(int);
+                }
+            }, 10);
+        },
 
     },
+    mounted(){
+        this.soundOn()
+        // this.soundOff()
+     },
     computed:{
         playerIsDying(){
             const dying = this.player.life <= 20 ? true : false

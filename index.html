@@ -10,7 +10,42 @@
 </head>
 <body>
     <div id="monster-killer">
+        <audio ref="soundtrack" autoplay loop src="audio/soundTrack.mp3"></audio>
+        <audio ref="especialAttackSound" src="audio/specialAttack.wav"></audio>
+        <audio ref="gameOn" src="audio/gameStart.wav"></audio>
+        <audio ref="healingSpell" src="audio/healingSpell.wav"></audio>
+        <audio ref="attackSound" src="audio/attack.mp3"></audio>
+        <audio ref="giveUpSound" src="audio/gaveUp.wav"></audio>
+
         <div class="panel">
+            <div class="card credits" :style="[credits ? {width:'90%', marginLeft: '4%'} : {width:'10%', marginLeft: '0%'}]">
+                <span @click="credits = !credits" class="tittle">Créditos</span>
+                <div v-show="credits">
+                    <h5>Sons do jogo</h5>
+                    <ul>
+                        <li>Battle Horn by Porphyr at <a href="https://freesound.org/s/188815/" target="_blank">Freesound.org</a></li>
+                        <li>Epic_Battle_Music_1.MP3 by Airwolf89 at <a href="https://freesound.org/s/346455/" target="_blank">Freesound.org</a></li>
+                        <li>Battle Screaming by Sadisticu at <a href="https://freesound.org/s/571396/" target="_blank">Freesound.org</a></li>
+                        <li>Healing Spell by EminYILDIRIM at <a href="https://freesound.org/s/563662/" target="_blank">Freesound.org</a></li>
+                        <li>Voice Request #35 - You'll get them next time, chief.wav" by InspectorJ at <a href="https://freesound.org/s/431162/" target="_blank">Freesound.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="soundControll">
+                
+                <svg v-if="!muted" @click="soundOff" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+                <svg v-else @click="soundOn" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
+
+                <div class="slidecontainer">
+                    <input @change="changeVolume" type="range" min="1" max="100" :value="volume * 100" class="slider" ref="volumeSlider">
+                  </div>
+            </div>
+
             <div class="card">
                 <div class="oponent">
                     <h1>Jogador</h1>

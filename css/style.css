@@ -1,3 +1,17 @@
+:root{
+    --bkg-color: white;
+}
+
+body{
+    background-color: var(--bkg-color);
+}
+
+#monster-killer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card {
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 0px 2px 7px -4px black;
@@ -5,153 +19,219 @@
     padding: 20px;
     display: flex;
 }
-.battle-log{
-    justify-content: space-evenly;
-}
 
-.oponent {
-    display: flex;
+.credits {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 50%;
-    margin: 5px 30px;
-}
-
-.life-container{
-    width: 100%;
-    height: 20px;
-    border: 0.5px solid gray;
-}
-
-.life {
-    width: 100%;
-    height: 20px;
-    background-color: green;
-}
-
-.actions {
-    display: flex;
     justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 5%;
+    opacity: 0.4;
+    width: 10%;
+    transition: all 2s ease;
 }
 
-.btn {
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    border: none;
+.credits:hover {
+    opacity: 0.8;
+}
+
+.credits .tittle{
     cursor: pointer;
-    margin-left: 10px;
+    font-size: 1.5rem;
 }
 
-.btn.new-game {
-    background-color: rgb(0, 92, 230);
+.credits h5 {
+    margin-bottom: 5px;
 }
 
-.btn.new-game:hover {
-    background-color: rgb(2, 72, 179);
-}
-
-.btn.attack {
-    background-color: rgb(230, 0, 0);
-}
-
-.btn.attack:hover {
-    background-color: rgb(179, 2, 2);
-}
-
-.btn.special-attack {
-    background-color: rgb(230, 92, 0);
-}
-
-.btn.special-attack:hover {
-    background-color: rgb(179, 96, 2);
-}
-
-.btn.heal {
-    background-color: rgb(0, 173, 38);
-}
-
-.btn.heal:hover {
-    background-color: rgb(0, 148, 7);
-}
-
-.btn.give-up {
-    background-color: rgb(163, 163, 163);
-}
-
-.btn.give-up:hover {
-    background-color: rgb(97, 97, 97);
-}
-
-.dying {
-    background-color: red;
-}
-
-.battle-log {
-    flex-direction: column;
-    align-items: center;
-}
-
-.round {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.round-number {
-    background-color: rgb(233, 233, 233);
-    margin: 2px 0px;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    padding: 5px 0px;
-}
-
-.round-action {
-    margin: 5px 0px;
-    display: flex;
-    justify-content: center;
-    padding: 5px 0px;
-    color: white;
-    text-transform: uppercase;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.round-action.odd {
-    background-color: rgb(255, 109, 109);
-}
-
-.round-action.even {
-    background-color: rgb(88, 174, 255);
+.credits ul {
+    margin: 0px;
 }
 
 .panel {
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    background-color: white;
+  position: sticky;
+  top: 0;
+  width: 70%;
+  background-color: var(--bkg-color);
+}
+
+.battle-log {  
+    flex-direction: column;
+    width: 60%;
+}
+
+.oponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 5px 30px;
+}
+
+.life-container {
+  width: 100%;
+  height: 20px;
+  border: 0.5px solid gray;
+}
+
+.life {
+  width: 100%;
+  height: 20px;
+  background-color: green;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn.new-game {
+  background-color: rgb(0, 92, 230);
+}
+
+.btn.new-game:hover {
+  background-color: rgb(2, 72, 179);
+}
+
+.btn.attack {
+  background-color: rgb(230, 0, 0);
+}
+
+.btn.attack:hover {
+  background-color: rgb(179, 2, 2);
+}
+
+.btn.special-attack {
+  background-color: rgb(230, 92, 0);
+}
+
+.btn.special-attack:hover {
+  background-color: rgb(179, 96, 2);
+}
+
+.btn.heal {
+  background-color: rgb(0, 173, 38);
+}
+
+.btn.heal:hover {
+  background-color: rgb(0, 148, 7);
+}
+
+.btn.give-up {
+  background-color: rgb(163, 163, 163);
+}
+
+.btn.give-up:hover {
+  background-color: rgb(97, 97, 97);
+}
+
+.dying {
+  background-color: red;
+}
+
+.round {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.round-number {
+  background-color: rgb(233, 233, 233);
+  margin: 2px 0px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
+
+.round-action {
+  margin: 5px 0px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0px;
+  color: white;
+  text-transform: uppercase;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.round-action.odd {
+  background-color: rgb(255, 109, 109);
+}
+
+.round-action.even {
+  background-color: rgb(88, 174, 255);
 }
 
 .result {
-    display: flex;
-    justify-content: center;
-    font-size: larger;
-    font-weight: bolder;
-    text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 .result.loser {
-    color: red;
+  color: red;
 }
 .result.winner {
-    color: green;
+  color: green;
 }
 
 img {
-    width: 50%;
-    height: 50%;
+  width: 50%;
+  height: 50%;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.soundControll {
+  display: flex;
+}
+
+.slider {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #04aa6d;
+  cursor: pointer;
 }
