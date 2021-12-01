@@ -3,7 +3,7 @@
 ## Ideia do projeto
 <div>
     <p>Desafio proposto no curso de vue.js da <a href="https://www.udemy.com/course/vue-js-completo/" target="_blank" rel="noopener noreferrer">Udemy</a></p>
-    <span>Para visualizar o jogo e o desafio acesso os <span fontStyle="italic" fontWeight="bold">Vídeo de amostra gratuito do curso: Introdução & Desafio</span></span>
+    <span>Para visualizar o jogo e o desafio acesse os <span fontStyle="italic" fontWeight="bold">Vídeo de amostra gratuito do curso: Introdução & Desafio</span></span>
 </div>
 <h4 align="center">
     Feito em: 
