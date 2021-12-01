@@ -1,5 +1,5 @@
 <p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
-<span align="center">Feito em: Vue.js</span>
+<div align="center">Feito em: Vue.js</div>
 
 <h1 align="center">monsterKiller</h1>
 
@@ -14,6 +14,7 @@
     <li>HTML</li>
     <li>CSS</li>
     <li>Javascript</li>
+    <li>Vue.js</li>
 </ul>
 
 ## Sobre
