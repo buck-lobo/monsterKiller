@@ -190,7 +190,6 @@ new Vue({
     },
     mounted(){
         this.soundOn()
-        // this.soundOff()
      },
     computed:{
         playerIsDying(){
