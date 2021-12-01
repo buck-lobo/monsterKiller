@@ -1,18 +1,15 @@
-<h1 align="center">monsterKiller</h1>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
 
-<h4 align="center">
-    Feito em: 
-    <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
-        <img width="30" src="https://vuejs.org/images/logo.png" alt="Vue logo">
-        Vue.js
+<h1 align="center">monsterKiller</h1>
+<div align="center">
+    Feito em: Vue.js
     </a>
-</h4>
+</div>
 
 ## Ideia do projeto
 <div>
-    <p>Desafio proposto no curso de vue.js da <a href="https://www.udemy.com/course/vue-js-completo/" target="_blank" rel="noopener noreferrer">Udemy</a></p>
+    <p>Desafio proposto no curso de vue.js da <a href="https://www.udemy.com/course/vue-js-completo/" target="_blank" rel="noopener noreferrer">Udemy</p>
     <span>Para visualizar o jogo e o desafio acesse os <span fontStyle="italic" fontWeight="bold">Vídeo de amostra gratuito do curso: Introdução & Desafio</span></span>
-    [go](http://stackoverflow.com){:target="_blank" rel="noopener"}
 </div>
 
 ## Tecnologias utilizadas
