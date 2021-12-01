@@ -1,10 +1,7 @@
 <p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
+<span align="center">Feito em: Vue.js</span>
 
 <h1 align="center">monsterKiller</h1>
-<div align="center">
-    Feito em: Vue.js
-    </a>
-</div>
 
 ## Ideia do projeto
 <div>
