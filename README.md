@@ -32,3 +32,6 @@
 <p>Independente da ação do jogador, o monstro sempre atacará (salve a desistência).</p>
 <p>Não foi implementado limite de ações ou cooldown (Intervalo de uso).</p>
 <p>O jogo acaba quando a vida de qualquer um dos adversários chega a 0.</p>
+
+## Acesso ao projeto
+<p>Para ver o projeto em funcionamento acesse: <a href="https://buck-lobo.github.io/monsterKiller/" target="_blank">Monster Killer</a></p>
