@@ -6,7 +6,7 @@
 ## Ideia do projeto
 <div>
     <p>Desafio proposto no curso de vue.js da <a href="https://www.udemy.com/course/vue-js-completo/" target="_blank" rel="noopener noreferrer">Udemy</p></a>
-    <span>Para visualizar o jogo e o desafio acesse os <span fontStyle="italic" fontWeight="bold">Vídeo de amostra gratuito do curso: Introdução & Desafio</span></span>
+    <span>Para visualizar o jogo e o desafio, acesse o <span fontStyle="italic" fontWeight="bold">vídeo de amostra gratuito do curso: Introdução & Desafio</span></span>
 </div>
 
 ## Tecnologias utilizadas
