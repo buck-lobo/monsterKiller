@@ -10,13 +10,20 @@
 </head>
 <body>
     <div id="monster-killer">
-        <audio ref="soundtrack" autoplay loop src="audio/soundTrack.mp3"></audio>
+        <audio ref="soundtrack" src="audio/soundTrack.mp3" loop autoplay muted></audio>
         <audio ref="especialAttackSound" src="audio/specialAttack.wav"></audio>
         <audio ref="gameOn" src="audio/gameStart.wav"></audio>
         <audio ref="healingSpell" src="audio/healingSpell.wav"></audio>
         <audio ref="attackSound" src="audio/attack.mp3"></audio>
         <audio ref="giveUpSound" src="audio/gaveUp.wav"></audio>
-
+        <div class="alert" v-show="!userInteraction">
+            <p>
+                Para uma melhor experiência, a trilha sonora do jogo foi desabilitada. 
+                Você pode habilitar clicando no botão de volume!
+            </p>
+            <span @click="userInteraction = !userInteraction">X</span>
+            
+        </div>
         <div class="panel">
             <div class="card credits" :style="[credits ? {width:'90%', marginLeft: '4%'} : {width:'10%', marginLeft: '0%'}]">
                 <span @click="credits = !credits" class="tittle">Créditos</span>

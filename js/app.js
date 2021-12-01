@@ -22,8 +22,9 @@ new Vue({
         },
         battleLog: [],
         volume: 0.2,
-        muted: false,
+        muted: true,
         credits: false,
+        userInteraction: false,
     },
     methods: {
         random(min, max){
@@ -67,8 +68,11 @@ new Vue({
         lifeManagment(playerAttack, monsterAttack){
             const {monster, player} = this.calibrate(false)
             
-            // monster.life -= playerAttack
-            // monster.life = monster.life < 0 ? 0 : monster.life
+            /** ORIGINAL 
+                monster.life -= playerAttack
+                monster.life = monster.life < 0 ? 0 : monster.life
+            */  
+            // Adicionado após assistir aula
             monster.life = Math.max(monster.life -= playerAttack, 0)
             
             player.life -= monsterAttack
@@ -111,7 +115,7 @@ new Vue({
             this.newGame = false
         },
         startGame(){
-            this.$refs.gameOn.play()
+            this.startGameSound()
             this.restart()
             this.newGame = true
         },
@@ -130,30 +134,37 @@ new Vue({
             }
         },
         soundOff(){
-            this.$refs.soundtrack.volume = 0
             this.volume = 0
             this.muted = true
         },
         soundOn(){
-            this.$refs.soundtrack.volume = 0.2
-            this.$refs.soundtrack.play()
+            const audio = this.$refs.soundtrack
             this.volume = 0.2
             this.muted = false
+            let prom = audio.play()
+
+            if( prom !== undefined){
+                prom.then(_ => {
+                    this.userInteraction = true
+                }).catch(error => {
+                    console.log('Não deu pra tocar: ', error)
+
+                })
+            }
         },
         changeVolume(event){
-            console.log('Input', event.target.value)
             this.volume = event.target.value / 100
-            this.$refs.soundtrack.volume = this.volume
+        },
+        startGameSound(){
+            this.$refs.gameOn.play()
         },
         specialAttackSound(){
             const audio = this.$refs.especialAttackSound
             audio.currentTime = 0
-            audio.volume = this.volume
             audio.play()
         },
         healingSound(){
             const audio = this.$refs.healingSpell
-            audio.volume = this.volume
             audio.currentTime = 0
             audio.play()
             let int = setInterval(function() {
@@ -165,7 +176,6 @@ new Vue({
         },
         attackSound(){
             const audio = this.$refs.attackSound
-            audio.volume = this.volume
             audio.currentTime = 0.6
             audio.play()
             let int = setInterval(function() {
@@ -177,7 +187,6 @@ new Vue({
         },
         giveUpSound(){
             const audio = this.$refs.giveUpSound
-            audio.volume = this.volume
             audio.currentTime = 5
             audio.play()
             let int = setInterval(function() {
@@ -190,7 +199,7 @@ new Vue({
 
     },
     mounted(){
-        this.soundOn()
+        this.soundOff()
      },
     computed:{
         playerIsDying(){
@@ -212,6 +221,14 @@ new Vue({
                 this.newGame = false
                 this.result = true
             }          
+        },
+        volume(novoVolume){
+            this.$refs.soundtrack.volume = novoVolume
+            this.$refs.gameOn.volume = novoVolume
+            this.$refs.attackSound.volume = novoVolume
+            this.$refs.especialAttackSound.volume = novoVolume
+            this.$refs.healingSpell.volume = novoVolume
+            this.$refs.giveUpSound.volume = novoVolume
         }
     }
 })
