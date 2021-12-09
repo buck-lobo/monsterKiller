@@ -19,7 +19,7 @@
 
 ## Sobre
 <p>
-    Durante o curso em questão, especificamente na <span fontStyle="italic">aula #61</span>, foi apresentado aos alunos um jogo e como deveria funcionar. Antes que o professor mostra-se sua implementação, os alunos foram encorajados e desafiados a tentarem, da sua maneira, reproduzir o que foi apresentado no início do módulo. 
+    Durante o curso em questão, especificamente na <span fontStyle="italic">aula #61</span>, foi apresentado aos alunos um jogo e como deveria funcionar. Antes que o professor mostrasse sua implementação, os alunos foram encorajados e desafiados a tentarem, da sua maneira, reproduzir o que foi apresentado no início do módulo. 
     <p>O resultado do desafio foi o projeto atual!</p>
 </p>
 
